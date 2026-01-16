@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario de Términos | Verkoper SPA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #ff6b35;
+            --primary-dark: #f7931e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .logo {
+            font-size: 3em;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+
+        .search-box {
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .alphabet-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .letter-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .letter-btn:hover, .letter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .term-section {
+            margin-bottom: 40px;
+        }
+
+        .letter-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .term-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .term-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .term-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .term-abbr {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .term-definition {
+            color: #2c3e50;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .term-example {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.95em;
+            margin-top: 10px;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .letter-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <div class="nav-bar">
+        <a href="index.html" class="nav-btn">
+            🏠 Volver al Inicio
+        </a>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">VERKOPER</div>
+            <h1>📚 Glosario de Términos</h1>
+            <p class="subtitle">Definiciones de términos técnicos y abreviaturas</p>
+        </div>
+
+        <!-- Búsqueda -->
+        <div class="search-box">
+            <input 
+                type="text" 
+                class="search-input" 
+                id="searchInput"
+                placeholder="🔍 Buscar término o abreviatura..."
+                onkeyup="filterTerms()"
+            >
+        </div>
+
+        <!-- Navegación alfabética -->
+        <div class="alphabet-nav" id="alphabetNav">
+            <!-- Se genera dinámicamente -->
+        </div>
+
+        <!-- Sección A -->
+        <div class="term-section" data-letter="A">
+            <div class="letter-header">A</div>
+            
+            <div class="term-card">
+                <div class="term-title">Amonestación <span class="term-abbr">SANCIÓN</span></div>
+                <div class="term-definition">
+                    Sanción laboral que puede ser verbal o escrita, aplicada por incumplimiento de protocolos o normas internas. Se registra en el expediente del trabajador.
+                </div>
+                <div class="term-example">
+                    <strong>Ejemplo:</strong> "El vendedor recibió una amonestación escrita por no enviar el reporte semanal."
+                </div>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">Apertura de Bodega</div>
+                <div class="term-definition">
+                    Acción de habilitar la bodega para operaciones a las 08:00 hrs. El operario responsable debe verificar condiciones de seguridad y acceso.
+                </div>
+                <div class="term-example">
+                    <strong>Ejemplo:</strong> "La apertura tardía de bodega afecta toda la operación de ventas."
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección C -->
+        <div class="term-section" data-letter="C">
+            <div class="letter-header">C</div>
+            
+            <div class="term-card">
+                <div class="term-title">Colación</div>
+                <div class="term-definition">
+                    Período de 30 minutos para alimentación, no imputable a la jornada laboral. Se realiza en bloques de 12:45-13:15 o 13:30-14:00 hrs.
+                </div>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">Cotización</div>
+                <div class="term-definition">
+                    Documento comercial que detalla productos, cantidades y precios ofrecidos al cliente. Primer paso del proceso de venta.
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección E -->
+        <div class="term-section" data-letter="E">
+            <div class="letter-header">E</div>
+            
+            <div class="term-card">
+                <div class="term-title">EPP <span class="term-abbr">ABREVIATURA</span></div>
+                <div class="term-definition">
+                    Elementos de Protección Personal. Equipamiento obligatorio para prevenir riesgos laborales (guantes, cascos, calzado de seguridad, etc.).
+                </div>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">ERP <span class="term-abbr">ABREVIATURA</span></div>
+                <div class="term-definition">
+                    Enterprise Resource Planning. Sistema de gestión empresarial que integra procesos de ventas, inventario, facturación y administración. En Verkoper se utiliza MAXXA.
+                </div>
+                <div class="term-example">
+                    <strong>Ejemplo:</strong> "Todos los movimientos de stock deben registrarse en el ERP."
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección F -->
+        <div class="term-section" data-letter="F">
+            <div class="letter-header">F</div>
+            
+            <div class="term-card">
+                <div class="term-title">Factura</div>
+                <div class="term-definition">
+                    Documento tributario que formaliza la venta. Solo puede emitirse después de la Guía de Despacho y debe cruzarse correctamente con esta.
+                </div>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">Falta Grave</div>
+                <div class="term-definition">
+                    Incumplimiento serio de protocolos que afecta la operación o genera riesgos. Ejemplos: reincidencia en atrasos, no validar pagos, omitir avisos obligatorios.
+                </div>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">Falta Gravísima</div>
+                <div class="term-definition">
+                    Incumplimiento crítico con impacto operativo o económico significativo. Ejemplos: marcaje fraudulento, facturación sin respaldo, no apertura de bodega.
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección G -->
+        <div class="term-section" data-letter="G">
+            <div class="letter-header">G</div>
+            
+            <div class="term-card">
+                <div class="term-title">GD - Guía de Despacho <span class="term-abbr">ABREVIATURA</span></div>
+                <div class="term-definition">
+                    Documento tributario que autoriza el traslado de mercadería. Paso obligatorio entre Nota de Venta y Factura. Genera el descuento de stock.
+                </div>
+                <div class="term-example">
+                    <strong>Ejemplo:</strong> "Está prohibido facturar sin tener la GD correspondiente."
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección M -->
+        <div class="term-section" data-letter="M">
+            <div class="letter-header">M</div>
+            
+            <div class="term-card">
+                <div class="term-title">Marcaje Biométrico</div>
+                <div class="term-definition">
+                    Sistema de control de asistencia mediante huella digital. Registro obligatorio de ingreso y salida de todos los colaboradores.
+                </div>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">Merma</div>
+                <div class="term-definition">
+                    Pérdida o disminución de mercadería por deterioro, daño o diferencia de inventario. Debe reportarse inmediatamente al Jefe de Sucursal.
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección N -->
+        <div class="term-section" data-letter="N">
+            <div class="letter-header">N</div>
+            
+            <div class="term-card">
+                <div class="term-title">NV - Nota de Venta <span class="term-abbr">ABREVIATURA</span></div>
+                <div class="term-definition">
+                    Documento interno que confirma el compromiso de venta. Paso obligatorio después de la cotización y antes de la Guía de Despacho.
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección P -->
+        <div class="term-section" data-letter="P">
+            <div class="letter-header">P</div>
+            
+            <div class="term-card">
+                <div class="term-title">Producto Sobredimensionado</div>
+                <div class="term-definition">
+                    Todo producto cuyas dimensiones superen el pallet estándar de 1,0 x 1,2 metros. Requiere aviso obligatorio a Administración y Bodega.
+                </div>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">Protocolo</div>
+                <div class="term-definition">
+                    Conjunto de normas y procedimientos obligatorios que regulan el funcionamiento de un área específica de la empresa.
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección R -->
+        <div class="term-section" data-letter="R">
+            <div class="letter-header">R</div>
+            
+            <div class="term-card">
+                <div class="term-title">RIOHS <span class="term-abbr">ABREVIATURA</span></div>
+                <div class="term-definition">
+                    Reglamento Interno de Orden, Higiene y Seguridad. Documento legal que establece normas laborales, deberes, prohibiciones y sanciones.
+                </div>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">Reproceso</div>
+                <div class="term-definition">
+                    Repetición innecesaria de una tarea administrativa u operativa por error, falta de coordinación o incumplimiento de procesos.
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección S -->
+        <div class="term-section" data-letter="S">
+            <div class="letter-header">S</div>
+            
+            <div class="term-card">
+                <div class="term-title">SLA <span class="term-abbr">ABREVIATURA</span></div>
+                <div class="term-definition">
+                    Service Level Agreement (Acuerdo de Nivel de Servicio). Define tiempos máximos de respuesta por canal de comunicación: WhatsApp 1h, Email 2h, Web 3h.
+                </div>
+            </div>
+
+            <div class="term-card">
+                <div class="term-title">Stock</div>
+                <div class="term-definition">
+                    Inventario disponible de productos en bodega. Debe actualizarse automáticamente con cada movimiento registrado en el ERP.
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección T -->
+        <div class="term-section" data-letter="T">
+            <div class="letter-header">T</div>
+            
+            <div class="term-card">
+                <div class="term-title">Trazabilidad</div>
+                <div class="term-definition">
+                    Capacidad de rastrear el historial, ubicación y estado de productos, operaciones o documentos a través de registros y evidencias.
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección V -->
+        <div class="term-section" data-letter="V">
+            <div class="letter-header">V</div>
+            
+            <div class="term-card">
+                <div class="term-title">Validación de Pago</div>
+                <div class="term-definition">
+                    Verificación obligatoria de comprobantes de transferencia o pago en efectivo antes de procesar una venta. Debe confirmarse con jefatura o correo corporativo.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Generar navegación alfabética
+        function generateAlphabetNav() {
+            const letters = ['A', 'C', 'E', 'F', 'G', 'M', 'N', 'P', 'R', 'S', 'T', 'V'];
+            const nav = document.getElementById('alphabetNav');
+            
+            letters.forEach(letter => {
+                const btn = document.createElement('button');
+                btn.className = 'letter-btn';
+                btn.textContent = letter;
+                btn.onclick = () => scrollToLetter(letter);
+                nav.appendChild(btn);
+            });
+        }
+
+        function scrollToLetter(letter) {
+            const section = document.querySelector(`[data-letter="${letter}"]`);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function filterTerms() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const cards = document.querySelectorAll('.term-card');
+            const sections = document.querySelectorAll('.term-section');
+            
+            if (filter === '') {
+                sections.forEach(section => section.classList.remove('hidden'));
+                cards.forEach(card => card.classList.remove('hidden'));
+                return;
+            }
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.term-title').textContent.toLowerCase();
+                const definition = card.querySelector('.term-definition').textContent.toLowerCase();
+                
+                if (title.includes(filter) || definition.includes(filter)) {
+                    card.classList.remove('hidden');
+                    card.parentElement.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Ocultar secciones sin resultados
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.term-card:not(.hidden)');
+                if (visibleCards.length === 0) {
+                    section.classList.add('hidden');
+                } else {
+                    section.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            generateAlphabetNav();
+        });
+    </script>
+</body>
+</html>
