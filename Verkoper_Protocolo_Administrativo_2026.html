@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo de Trabajo - Área Administrativa | Verkoper SPA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @media print {
+            body { margin: 0; }
+            .no-print { display: none; }
+            .page-break { page-break-after: always; }
+            .cover-page { page-break-after: always; }
+            
+            /* FORZAR IMPRESIÓN DE COLORES Y FONDOS */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            /* Asegurar que los gradientes se impriman */
+            .cover-page,
+            .header,
+            .section-number,
+            .btn-download {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            /* Mantener colores de cajas informativas */
+            .info-box,
+            .warning-box,
+            .critical-box,
+            .success-box {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* ESTILOS DE PORTADA */
+        .cover-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .cover-logo {
+            font-size: 4.5em;
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .cover-title {
+            font-size: 2.8em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            border-top: 3px solid white;
+            border-bottom: 3px solid white;
+            padding: 25px 0;
+        }
+
+        .cover-subtitle {
+            font-size: 1.6em;
+            font-weight: 300;
+            margin-bottom: 50px;
+        }
+
+        .cover-info {
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin-top: 50px;
+        }
+
+        .cover-info p {
+            margin: 12px 0;
+            font-size: 1.2em;
+        }
+
+        .cover-footer {
+            margin-top: 60px;
+            font-size: 1.1em;
+            font-weight: 500;
+            z-index: 10;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .company-name {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .document-title {
+            font-size: 1.5em;
+            font-weight: 300;
+            border-left: 4px solid white;
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #ff6b35;
+        }
+
+        .section-number {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .subsection {
+            margin-bottom: 25px;
+        }
+
+        .subsection-title {
+            color: #ff6b35;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .critical-box {
+            background: #ffebee;
+            border-left: 5px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .flow-diagram {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px solid #ff6b35;
+        }
+
+        .flow-diagram > div {
+            background: white;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 8px;
+            font-weight: 600;
+            max-width: 400px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .flow-arrow {
+            font-size: 2em;
+            color: #ff6b35;
+            margin: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 40px auto;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .footer-note {
+            margin-top: 10px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+/* ESTILOS GLOBALES MEJORADOS PARA TODOS LOS PROTOCOLOS */
+
+/* Variables de color para tema claro y oscuro */
+:root {
+    --primary-color: #ff6b35;
+    --primary-dark: #f7931e;
+    --bg-color: #ffffff;
+    --bg-secondary: #f4f4f4;
+    --text-color: #2c3e50;
+    --text-secondary: #7f8c8d;
+    --border-color: #e0e0e0;
+    --shadow: rgba(0,0,0,0.1);
+}
+
+body {
+    background: var(--bg-secondary);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    background: var(--bg-color);
+}
+
+/* TABLA DE CONTENIDOS FLOTANTE */
+
+/* TOGGLE DE TEMA OSCURO */
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+}
+
+/* ESTADÍSTICAS DE LECTURA */
+.reading-stats {
+    background: var(--bg-secondary);
+    padding: 15px 25px;
+    border-radius: 12px;
+    margin: 20px 0;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+    border-left: 4px solid var(--primary-color);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+.stat-icon {
+    font-size: 1.2em;
+}
+
+.stat-value {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* BOTÓN DE DESCARGA PDF */
+.download-pdf-btn {
+    background: #dc3545;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.download-pdf-btn:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+}
+
+/* BADGE DE VERSIÓN */
+.version-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+/* BOTÓN DE FEEDBACK */
+
+/* MODAL DE FEEDBACK */
+
+.feedback-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.feedback-content textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1em;
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.btn-submit, 
+
+.btn-submit:hover {
+    background: var(--primary-dark);
+}
+
+/* PROGRESS BAR DE LECTURA */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    z-index: 10001;
+    transition: width 0.2s ease;
+}
+
+/* TOOLTIPS */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    border-bottom: 1px dotted var(--text-secondary);
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.85em;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* BREADCRUMB */
+.breadcrumb {
+    background: var(--bg-secondary);
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+    font-size: 0.9em;
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    margin: 0 10px;
+    color: var(--text-secondary);
+}
+
+/* RESPONSIVE PARA MÓVIL */
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 768px) {
+    .reading-stats {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+}
+
+/* ANIMACIONES */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-in {
+    animation: slideIn 0.5s ease-in;
+}
+
+/* IMPRESIÓN */
+@media print {
+    
+}
+
+    /* CORRECCIONES CRÍTICAS - CSS MEJORADO */
+
+/* ========== VARIABLES DE TEMA CORREGIDAS ========== */
+:root {
+    --primary-color: #ff6b35;
+    --primary-dark: #f7931e;
+    --bg-color: #ffffff;
+    --bg-secondary: #f4f4f4;
+    --text-color: #2c3e50;
+    --text-secondary: #7f8c8d;
+    --border-color: #e0e0e0;
+    --shadow: rgba(0,0,0,0.1);
+    --card-bg: #ffffff;
+    --header-text: #2c3e50;
+}
+
+/* Forzar colores en modo oscuro */
+
+/* ========== TABLA DE CONTENIDOS MEJORADA ========== */
+
+/* Estado minimizado del TOC */
+
+/* ========== TOGGLE DE TEMA CORREGIDO ========== */
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+}
+
+/* ========== ESTADÍSTICAS DE LECTURA ========== */
+.reading-stats {
+    background: var(--bg-secondary);
+    padding: 15px 25px;
+    border-radius: 12px;
+    margin: 20px 0;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+    border-left: 4px solid var(--primary-color);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+.stat-icon {
+    font-size: 1.2em;
+}
+
+.stat-value {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.feedback-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.feedback-content p {
+    color: var(--text-secondary);
+}
+
+.feedback-content textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1em;
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.btn-submit, 
+
+.btn-submit:hover {
+    background: var(--primary-dark);
+}
+
+/* ========== PROGRESS BAR ========== */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    z-index: 10001;
+    transition: width 0.2s ease;
+}
+
+/* ========== BREADCRUMB ========== */
+.breadcrumb {
+    background: var(--bg-secondary);
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+    font-size: 0.9em;
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    margin: 0 10px;
+    color: var(--text-secondary);
+}
+
+/* ========== RESPONSIVE - OCULTAR TOC EN MÓVIL ========== */
+@media (max-width: 1200px) {
+    
+}
+
+@media (max-width: 768px) {
+
+    .reading-stats {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+}
+
+/* ========== IMPRESIÓN ========== */
+@media print {
+
+}
+
+/* ========== BOTONES MEJORADOS ========== */
+.nav-bar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-btn {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 107, 53, 0.4);
+}
+
+.nav-btn-secondary {
+    background: #f8f9fa;
+    color: #2c3e50;
+    border: 2px solid #e0e0e0;
+}
+
+.nav-btn-secondary:hover {
+    background: #e9ecef;
+    border-color: #ff6b35;
+}
+
+/* ========== BOTÓN VOLVER ARRIBA MEJORADO ========== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    border: none;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 6px 18px rgba(255, 107, 53, 0.5);
+}
+
+/* ========== PROTOCOLOS RELACIONADOS MEJORADOS ========== */
+.related-protocols {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    margin: 30px 0;
+    border-left: 4px solid #ff6b35;
+}
+
+.related-protocols h3 {
+    color: #2c3e50;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.related-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border-top: 3px solid #ff6b35;
+}
+
+.related-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.related-icon {
+    font-size: 2em;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.related-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 6px;
+    font-size: 1em;
+}
+
+.related-desc {
+    font-size: 0.8em;
+    color: #7f8c8d;
+    line-height: 1.4;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1400px) {
+    
+}
+
+@media (max-width: 1200px) {
+    
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        top: 10px;
+        right: 10px;
+        flex-direction: column;
+        padding: 8px;
+    }
+    
+    .nav-btn {
+        font-size: 0.8em;
+        padding: 6px 12px;
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .related-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== RESPONSIVE MOBILE-FIRST ========== */
+
+/* Desktop: Índice visible */
+@media (min-width: 1201px) {
+    
+}
+
+/* Tablet y móvil: Índice OCULTO */
+@media (max-width: 1200px) {
+    
+}
+
+/* Móvil: Ajustes generales */
+@media (max-width: 768px) {
+    /* Contenedor principal */
+    .container {
+        padding: 15px;
+        max-width: 100%;
+    }
+    
+    /* Contenido */
+    .content {
+        padding: 15px;
+    }
+    
+    /* Portada */
+    .cover-page {
+        padding: 40px 20px;
+        min-height: 80vh;
+    }
+    
+    .cover-title {
+        font-size: 2em;
+    }
+    
+    .cover-subtitle {
+        font-size: 1em;
+    }
+    
+    /* Secciones */
+    .section {
+        padding: 20px 15px;
+    }
+    
+    .section-header {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .section-title {
+        font-size: 1.3em;
+    }
+    
+    /* Tablas responsivas */
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        font-size: 0.85em;
+    }
+    
+    td, th {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    
+    /* Navegación superior */
+    .nav-bar {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        padding: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .nav-btn {
+        font-size: 0.8em;
+        padding: 8px 12px;
+        white-space: nowrap;
+    }
+    
+    /* Theme toggle */
+
+    /* Botón volver arriba */
+    .back-to-top {
+        bottom: 20px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1em;
+    }
+    
+    /* Feedback button */
+
+    /* Breadcrumb */
+    .breadcrumb {
+        font-size: 0.85em;
+        padding: 10px 15px;
+    }
+    
+    /* Reading stats */
+    .reading-stats {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .stat-item {
+        font-size: 0.85em;
+    }
+    
+    /* Protocolos relacionados */
+    .related-protocols {
+        padding: 20px 15px;
+    }
+    
+    .related-protocols h3 {
+        font-size: 1.2em;
+    }
+    
+    .related-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .related-card {
+        padding: 15px;
+    }
+    
+    .related-icon {
+        font-size: 1.8em;
+    }
+    
+    .related-title {
+        font-size: 0.95em;
+    }
+    
+    .related-desc {
+        font-size: 0.8em;
+    }
+    
+    /* Info boxes */
+    .info-box, .warning-box, .success-box, .critical-box {
+        padding: 12px;
+        margin: 15px 0;
+    }
+    
+    /* Listas */
+    ul, ol {
+        padding-left: 20px;
+    }
+    
+    li {
+        margin-bottom: 8px;
+        font-size: 0.95em;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 30px 15px;
+    }
+    
+    .footer p {
+        font-size: 0.9em;
+    }
+}
+
+/* Móvil pequeño: Ajustes adicionales */
+@media (max-width: 480px) {
+    .cover-title {
+        font-size: 1.7em;
+    }
+    
+    .cover-subtitle {
+        font-size: 0.9em;
+    }
+    
+    .section-title {
+        font-size: 1.2em;
+    }
+    
+    table {
+        font-size: 0.8em;
+    }
+    
+    .nav-btn {
+        font-size: 0.75em;
+        padding: 6px 10px;
+    }
+    
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
+    }
+}
+
+/* Landscape móvil */
+@media (max-width: 900px) and (orientation: landscape) {
+    .cover-page {
+        min-height: auto;
+        padding: 30px 20px;
+    }
+    
+    .nav-bar {
+        top: 5px;
+        right: 5px;
+        left: auto;
+    }
+
+}
+
+/* Prevenir zoom en inputs en iOS */
+@media (max-width: 768px) {
+    input, textarea, select {
+        font-size: 16px !important;
+    }
+}
+
+/* Mejorar táctil en móvil */
+@media (max-width: 768px) {
+    .nav-btn, 
+}
+
+/* Fix para scroll horizontal en móvil */
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+    
+    .container {
+        overflow-x: hidden;
+    }
+    
+    .content {
+        overflow-x: hidden;
+    }
+}
+
+/* MODAL DE FEEDBACK */
+
+.feedback-content h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.feedback-content textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95em;
+    resize: vertical;
+    margin-bottom: 20px;
+}
+
+.feedback-content textarea:focus {
+    outline: none;
+    border-color: #28a745;
+}
+
+.btn-cancel, 
+
+.btn-cancel:hover {
+    background: #d0d0d0;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+    </style>
+
+    <meta name="description" content="Portal oficial de protocolos y manuales Verkoper SPA - Ferretería Técnica Especializada">
+    <meta name="keywords" content="protocolos, manuales, verkoper, ferretería, chile">
+    <meta name="author" content="Verkoper SPA">
+</head>
+<body>
+    <!-- PORTADA -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <div class="cover-logo">VERKOPER</div>
+            <h1 class="cover-title">PROTOCOLO DE TRABAJO</h1>
+            <p class="cover-subtitle">ÁREA ADMINISTRATIVA</p>
+            <div class="cover-divider"></div>
+            <p class="cover-text">Documento Oficial</p>
+            <p class="cover-company">Verkoper SPA</p>
+            <p class="cover-tagline">Ferretería Técnica Especializada</p>
+        </div>
+        <div class="cover-footer">
+            <p>Vigencia: 2026</p>
+        </div>
+    </div>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <div class="nav-bar no-print">
+        <a href="index.html" class="nav-btn">
+            🏠 Inicio
+        </a>
+        <button onclick="window.print()" class="nav-btn nav-btn-secondary">
+            🖨️ Imprimir
+        </button>
+    </div>
+
+    <!-- Barra de Progreso de Lectura -->
+    <div class="reading-progress no-print" id="readingProgress"></div>
+
+        <!-- Contenido del Protocolo -->
+        <div class="content">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb no-print" id="breadcrumb">
+        <!-- Se genera automáticamente -->
+    </div>
+
+            <div class="reading-stats no-print">
+                <div class="stat-item">
+                    <span class="stat-icon">⏱️</span>
+                    <span>Lectura: <span class="stat-value" id="readingTime">8 min</span></span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">📅</span>
+                    <span>Actualizado: <span class="stat-value">15 Ene 2026</span></span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">📄</span>
+                    <span>Versión: <span class="stat-value">2.1</span></span>
+                </div>
+            </div>
+
+            <!-- Sección 6: Emisión de Documentos Tributarios -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <h2 class="section-title">Emisión de Documentos Tributarios</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">6.1 Orden Obligatorio del Proceso</h3>
+                    <p>El área administrativa deberá respetar estrictamente el siguiente flujo:</p>
+
+                    <div class="flow-diagram">
+                        <div>🔹 NOTA DE VENTA</div>
+                        <div class="flow-arrow">⬇️</div>
+                        <div>🔹 GUÍA DE DESPACHO</div>
+                        <div class="flow-arrow">⬇️</div>
+                        <div>🔹 FACTURACIÓN</div>
+                        <div class="flow-arrow">⬇️</div>
+                        <div>🔹 REGISTRO Y ARCHIVO</div>
+                    </div>
+
+                    <div class="critical-box" style="margin: 20px 0;">
+                        <p><strong>🚫 Está estrictamente prohibido:</strong></p>
+                        <ul style="margin-left: 25px; margin-top: 15px;">
+                            <li style="margin-bottom: 10px;">Facturar sin Guía de Despacho</li>
+                            <li style="margin-bottom: 10px;">Emitir documentos con datos incompletos o incorrectos</li>
+                            <li style="margin-bottom: 10px;">Saltarse etapas del proceso</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 7: Coordinación con Bodega -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <h2 class="section-title">Coordinación con Bodega</h2>
+                </div>
+
+                <p>El área administrativa deberá:</p>
+                <ul style="margin-left: 25px; margin-top: 15px;">
+                    <li style="margin-bottom: 10px;">Confirmar que la documentación esté correcta antes de despacho</li>
+                    <li style="margin-bottom: 10px;">Informar a bodega sobre pedidos autorizados</li>
+                    <li style="margin-bottom: 10px;">Verificar que los productos despachados coincidan con la documentación</li>
+                    <li style="margin-bottom: 10px;">Corregir de inmediato cualquier error detectado</li>
+                </ul>
+
+                <div class="success-box" style="margin: 20px 0;">
+                    <p><strong>✓ Trabajo en equipo:</strong></p>
+                    <p>La coordinación efectiva entre Administración y Bodega es fundamental para evitar errores en el despacho y garantizar la satisfacción del cliente.</p>
+                </div>
+            </div>
+
+            <!-- Sección 8: Archivo y Trazabilidad Documental -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">8</div>
+                    <h2 class="section-title">Archivo y Trazabilidad Documental</h2>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">8.1 Documentos Obligatorios a Resguardar</h3>
+                    <p>El área administrativa deberá mantener respaldo de:</p>
+                    <ul style="margin-left: 25px; margin-top: 15px;">
+                        <li style="margin-bottom: 10px;">Comprobantes de pago</li>
+                        <li style="margin-bottom: 10px;">Notas de Venta</li>
+                        <li style="margin-bottom: 10px;">Guías de Despacho</li>
+                        <li style="margin-bottom: 10px;">Facturas / Boletas</li>
+                        <li style="margin-bottom: 10px;">Correos de validación</li>
+                        <li style="margin-bottom: 10px;">Comunicaciones relevantes</li>
+                    </ul>
+
+                    <div class="info-box" style="margin: 20px 0;">
+                        <p><strong>📂 El archivo podrá ser:</strong></p>
+                        <ul style="margin-left: 25px; margin-top: 15px;">
+                            <li style="margin-bottom: 10px;">Digital (ERP / correo / nube corporativa)</li>
+                            <li style="margin-bottom: 10px;">Físico, si la empresa lo requiere</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">8.2 Importancia de la Trazabilidad</h3>
+                    
+                    <div class="critical-box" style="margin: 20px 0;">
+                        <p><strong>🔴 La falta de respaldo documental expone a la empresa a:</strong></p>
+                        <ul style="margin-left: 25px; margin-top: 15px;">
+                            <li style="margin-bottom: 10px;">Pérdidas económicas</li>
+                            <li style="margin-bottom: 10px;">Reclamos de clientes</li>
+                            <li style="margin-bottom: 10px;">Observaciones contables o tributarias</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 9: Manejo de Errores Administrativos -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">9</div>
+                    <h2 class="section-title">Manejo de Errores Administrativos</h2>
+                </div>
+
+                <p>Ante la detección de:</p>
+                <ul style="margin-left: 25px; margin-top: 15px;">
+                    <li style="margin-bottom: 10px;">Pagos mal validados</li>
+                    <li style="margin-bottom: 10px;">Facturación incorrecta</li>
+                    <li style="margin-bottom: 10px;">Documentación incompleta</li>
+                </ul>
+
+                <div class="warning-box" style="margin: 20px 0;">
+                    <p><strong>El administrativo deberá:</strong></p>
+                    <ol>
+                        <li style="margin-bottom: 10px;">Informar de inmediato al Jefe de Sucursal</li>
+                        <li style="margin-bottom: 10px;">Detener el proceso si aún no se ha despachado</li>
+                        <li style="margin-bottom: 10px;">Registrar la situación y la corrección realizada</li>
+                    </ol>
+                </div>
+
+                <div class="success-box" style="margin: 20px 0;">
+                    <p><strong>💡 Cultura de mejora continua:</strong></p>
+                    <p>Reportar errores oportunamente no es una falta, sino una práctica profesional que protege a la empresa y al equipo de trabajo.</p>
+                </div>
+            </div>
+
+            <!-- Sección 10: Incumplimientos y Sanciones -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">10</div>
+                    <h2 class="section-title">Incumplimientos y Sanciones</h2>
+                </div>
+
+                <p>El incumplimiento del presente protocolo será sancionado conforme al Reglamento Interno, considerándose:</p>
+
+                <table style="margin-top: 20px;">
+                    <tr>
+                        <th>Tipo de Falta</th>
+                        <th>Descripción</th>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #ffc107;">Falta Leve</strong></td>
+                        <td>Errores administrativos aislados sin impacto</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #dc3545;">Falta Grave</strong></td>
+                        <td>Reincidencia, validación incorrecta de pagos</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #721c24;">Falta Gravísima</strong></td>
+                        <td>Facturación sin respaldo, autorización de despachos sin pago o con impacto económico</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Sección 11: Vigencia -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-number">11</div>
+                    <h2 class="section-title">Vigencia</h2>
+                </div>
+                <div class="success-box" style="margin: 20px 0;">
+                    <p>El presente protocolo entra en vigencia desde su publicación y es <strong>complementario</strong> al Reglamento Interno de Orden, Higiene y Seguridad de VERKOPER SPA.</p>
+                    <p style="margin-top: 15px;"><strong>Todo el personal del área administrativa es responsable de conocer, cumplir y hacer cumplir este protocolo.</strong></p>
+                </div>
+            </div>
+
+        <div class="related-protocols no-print">
+            <h3 style="color: var(--primary-color); margin: 25px 0 15px 0;">📚 Protocolos Relacionados</h3>
+            <div class="related-grid">
+                <a href="Verkoper_Protocolo_Ventas_2026.html" class="related-card">
+                    <span class="related-icon">📊</span>
+                    <div class="related-title">Protocolo de Ventas</div>
+                    <div class="related-desc">Proceso de venta y facturación</div>
+                </a>
+                <a href="Verkoper_Protocolo_Bodega_2026.html" class="related-card">
+                    <span class="related-icon">📦</span>
+                    <div class="related-title">Protocolo de Bodega</div>
+                    <div class="related-desc">Coordinación de despachos</div>
+                </a>
+                <a href="Verkoper_Matriz_Sanciones_2026.html" class="related-card">
+                    <span class="related-icon">⚖️</span>
+                    <div class="related-title">Matriz de Sanciones</div>
+                    <div class="related-desc">Obligaciones administrativas</div>
+                </a>
+            </div>
+        </div>
+
+            <button class="btn-download no-print" onclick="window.print()">
+                <span class="icon">📄</span> Descargar / Imprimir Documento
+            </button>
+        </div>
+
+        <div class="footer">
+            <p><strong>VERKOPER SPA</strong></p>
+            <p class="footer-note">Ferretería Técnica Especializada | www.verkoper.cl</p>
+            <p class="footer-note">Este es un documento oficial de la empresa. Su cumplimiento es obligatorio.</p>
+        </div>
+    </div>
+
+    <!-- Botón volver arriba -->
+
+    <script>
+        // Mostrar/ocultar botón de volver arriba
+        window.onscroll = function() {
+            const backToTop = document.getElementById('backToTop');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        };
+
+        // Función para scroll suave
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
+    <script>
+
+function updateReadingProgress() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    
+    const progressBar = document.getElementById('readingProgress');
+    if (progressBar) {
+        progressBar.style.width = scrolled + '%';
+    }
+}
+
+// ========== CALCULAR TIEMPO DE LECTURA ==========
+function calculateReadingTime() {
+    const content = document.querySelector('.content');
+    if (!content) return 0;
+    
+    const text = content.innerText || content.textContent;
+    const words = text.trim().split(/\s+/).length;
+    const wordsPerMinute = 200;
+    const minutes = Math.ceil(words / wordsPerMinute);
+    
+    return minutes;
+}
+
+function displayReadingTime() {
+    const minutes = calculateReadingTime();
+    const readingTimeElement = document.getElementById('readingTime');
+    
+    if (readingTimeElement && minutes > 0) {
+        readingTimeElement.textContent = `${minutes} min`;
+    }
+}
+
+// ========== BOTÓN VOLVER ARRIBA ==========
+function enhancedBackToTop() {
+    const backToTop = document.getElementById('backToTop');
+    
+    window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            if (backToTop) backToTop.classList.add('visible');
+        } else {
+            if (backToTop) backToTop.classList.remove('visible');
+        }
+        
+        updateReadingProgress();
+    };
+}
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// ========== BREADCRUMB ==========
+function generateBreadcrumb() {
+    const breadcrumb = document.getElementById('breadcrumb');
+    if (!breadcrumb) return;
+    
+    const pageTitle = document.querySelector('.cover-title')?.textContent || 
+                     document.querySelector('h1')?.textContent || 
+                     document.title;
+    
+    breadcrumb.innerHTML = `
+        <a href="index.html">🏠 Inicio</a>
+        <span class="breadcrumb-separator">›</span>
+        <span>${pageTitle}</span>
+    `;
+}
+
+// ========== INICIALIZACIÓN ==========
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Inicializando Verkoper Portal...');
+    
+    // Inicializar todas las funcionalidades
+
+    displayReadingTime();
+    enhancedBackToTop();
+    generateBreadcrumb();
+    
+    console.log('✅ Portal cargado correctamente');
+});
+
+// ========== ATAJOS DE TECLADO ==========
+document.addEventListener('keydown', function(e) {
+    // Ctrl/Cmd + D para toggle tema oscuro
+    if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
+        e.preventDefault();
+        toggleTheme();
+    }
+    
+    // Escape para cerrar modales
+    if (e.key === 'Escape') {
+        closeFeedbackModal();
+    }
+});
+
+// ========== CERRAR MODAL AL HACER CLICK FUERA ==========
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('feedbackModal');
+    if (modal && e.target === modal) {
+        closeFeedbackModal();
+    }
+});
+
+// ========== DETECCIÓN DE MÓVIL ==========
+function isMobile() {
+    return window.innerWidth <= 768;
+}
+
+function isTablet() {
+    return window.innerWidth > 768 && window.innerWidth <= 1200;
+}
+
+// ========== AJUSTES AUTOMÁTICOS PARA MÓVIL ==========
+function applyMobileOptimizations() {
+    if (isMobile() || isTablet()) {
+        // Ocultar tabla de contenidos en móvil/tablet
+        const toc = document.querySelector('
+        
+        // Ajustar tamaño de fuente si es muy pequeño
+        const body = document.body;
+        const computedFontSize = window.getComputedStyle(body).fontSize;
+        if (parseFloat(computedFontSize) < 14) {
+            body.style.fontSize = '16px';
+        }
+        
+        // Prevenir zoom en double-tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    }
+}
+
+// ========== MEJORAR SCROLL EN MÓVIL ==========
+function improveScrollPerformance() {
+    // Smooth scrolling para iOS
+    if (isMobile()) {
+        document.documentElement.style.webkitOverflowScrolling = 'touch';
+    }
+}
+
+// ========== PREVENIR BUGS DE ORIENTACIÓN ==========
+function handleOrientationChange() {
+    // Recalcular layout al cambiar orientación
+    const isMobileDevice = isMobile();
+    const toc = document.querySelector('
+}
+
+// Escuchar cambios de orientación
+window.addEventListener('orientationchange', function() {
+    setTimeout(handleOrientationChange, 200);
+});
+
+// ========== MEJORAR TÁCTIL ==========
+function improveTouchInteraction() {
+    // Agregar clase active en touch
+    const buttons = document.querySelectorAll('.nav-btn, .related-card, button');
+    
+    buttons.forEach(button => {
+        button.addEventListener('touchstart', function() {
+            this.classList.add('active-touch');
+        });
+        
+        button.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.classList.remove('active-touch');
+            }, 200);
+        });
+    });
+}
+
+// ========== FIX VIEWPORT HEIGHT EN MÓVIL ==========
+function fixViewportHeight() {
+    // Fix para 100vh en móviles
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Recalcular en resize
+window.addEventListener('resize', function() {
+    fixViewportHeight();
+    
+    // Reaplizar optimizaciones si cambió el tamaño
+    if (isMobile() || isTablet()) {
+        applyMobileOptimizations();
+    }
+});
+
+// ========== INICIALIZAR AL CARGAR ==========
+document.addEventListener('DOMContentLoaded', function() {
+    applyMobileOptimizations();
+    improveScrollPerformance();
+    improveTouchInteraction();
+    fixViewportHeight();
+    handleOrientationChange();
+    
+    console.log('📱 Optimizaciones móviles aplicadas');
+});
+
+    </script>
+
+    <!-- Botón Volver Arriba -->
+    <button class="back-to-top no-print" id="backToTop" onclick="scrollToTop()">
+        ⬆️
+    </button>
+
+</body>
+</html>
