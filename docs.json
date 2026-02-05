@@ -1,0 +1,167 @@
+[
+  {
+    "title": "Matriz de Seguridad y Prevención de Estafas",
+    "url": "/matrices/estafas.html",
+    "section": "matrices",
+    "tags": ["seguridad", "estafas", "prevención", "anti-fraude", "validación"],
+    "updated": "2026-02-05",
+    "version": "1.0",
+    "area": "Ventas, Administración, Jefatura",
+    "summary": "Identificación, prevención y mitigación de riesgos de estafas, suplantación y fraudes en procesos comerciales y administrativos.",
+    "critical": true
+  },
+  {
+    "title": "Protocolo de Horarios y Asistencia",
+    "url": "/protocolos/horarios.html",
+    "section": "protocolos",
+    "tags": ["horarios", "asistencia", "puntualidad", "marcaje", "colación"],
+    "updated": "2026-02-05",
+    "version": "2.2",
+    "area": "Todo el personal",
+    "summary": "Normas de horarios, asistencia, puntualidad, colación, marcaje biométrico y justificaciones para continuidad operativa.",
+    "critical": true
+  },
+  {
+    "title": "Protocolo Área Administrativa",
+    "url": "/protocolos/administrativo.html",
+    "section": "protocolos",
+    "tags": ["administración", "validación", "facturación", "OC", "archivo"],
+    "updated": "2026-02-05",
+    "version": "2.2",
+    "area": "Área Administrativa",
+    "summary": "Responsabilidades en validación comercial, adquisición, facturación, archivo y coordinación logística con trazabilidad.",
+    "critical": true
+  },
+  {
+    "title": "Procedimiento de Logística: Despachos y Retiros",
+    "url": "/procedimientos/logistica.html",
+    "section": "procedimientos",
+    "tags": ["logística", "despachos", "retiros", "transporte", "bodega", "trazabilidad"],
+    "updated": "2026-02-05",
+    "version": "1.0",
+    "area": "Administración, Bodega",
+    "summary": "Paso a paso para gestión de despachos y retiros con trazabilidad, eficiencia y respaldo fotográfico obligatorio.",
+    "critical": true
+  },
+  {
+    "title": "Procedimiento de Venta: Cotización a Facturación",
+    "url": "/procedimientos/venta.html",
+    "section": "procedimientos",
+    "tags": ["ventas", "cotización", "NV", "facturación", "flujo-documental"],
+    "updated": "2026-02-05",
+    "version": "1.0",
+    "area": "Ventas, Administración",
+    "summary": "Proceso completo de venta desde cotización hasta facturación, con verificación de identidad y prevención de estafas.",
+    "critical": true
+  },
+  {
+    "title": "Protocolo General de Conducta y Seguridad Operativa",
+    "url": "/protocolos/conducta.html",
+    "section": "protocolos",
+    "tags": ["conducta", "convivencia", "seguridad", "orden", "profesionalismo"],
+    "updated": "2026-02-05",
+    "version": "1.0",
+    "area": "Todo el personal",
+    "summary": "Principios de conducta, convivencia, seguridad física y digital para ambiente profesional y prevención de riesgos.",
+    "critical": false
+  },
+  {
+    "title": "Matriz de Cumplimiento por Rol",
+    "url": "/matrices/cumplimiento-rol.html",
+    "section": "matrices",
+    "tags": ["cumplimiento", "obligaciones", "evidencias", "roles", "responsabilidades"],
+    "updated": "2026-02-05",
+    "version": "1.0",
+    "area": "Todo el personal",
+    "summary": "Resumen de obligaciones por rol con evidencias requeridas y clasificación de incumplimientos.",
+    "critical": true
+  },
+  {
+    "title": "Protocolo de Trabajo Área de Ventas",
+    "url": "/protocolos/ventas.html",
+    "section": "protocolos",
+    "tags": ["ventas", "llamadas", "cotización", "SLA", "seguimiento"],
+    "updated": "2026-01-15",
+    "version": "2.1",
+    "area": "Área de Ventas",
+    "summary": "Lineamientos, procedimientos y estándares para ejecutivos comerciales: llamadas, cotizaciones, seguimiento y ERP.",
+    "critical": true
+  },
+  {
+    "title": "Protocolo de Trabajo Área de Bodega",
+    "url": "/protocolos/bodega.html",
+    "section": "protocolos",
+    "tags": ["bodega", "almacenamiento", "preparación", "stock", "registro-fotográfico"],
+    "updated": "2026-01-15",
+    "version": "2.1",
+    "area": "Área de Bodega",
+    "summary": "Normas de almacenamiento, orden, preparación de pedidos, registro fotográfico y actualización de stock en ERP.",
+    "critical": true
+  },
+  {
+    "title": "Protocolo de Funciones Jefe de Sucursal",
+    "url": "/protocolos/jefe-sucursal.html",
+    "section": "protocolos",
+    "tags": ["jefatura", "supervisión", "coordinación", "decisiones", "liderazgo"],
+    "updated": "2026-01-15",
+    "version": "2.1",
+    "area": "Jefatura de Sucursal",
+    "summary": "Funciones de supervisión, coordinación interáreas, gestión documental, toma de decisiones y comunicación oficial.",
+    "critical": false
+  },
+  {
+    "title": "Matriz de Sanciones",
+    "url": "/matrices/sanciones.html",
+    "section": "matrices",
+    "tags": ["sanciones", "incumplimientos", "disciplina", "RIOHS", "medidas"],
+    "updated": "2026-01-15",
+    "version": "2.1",
+    "area": "Todo el personal",
+    "summary": "Consolidado de obligaciones por rol, tipos de incumplimiento y sanciones asociadas con proporcionalidad y debido proceso.",
+    "critical": true
+  },
+  {
+    "title": "Guías Operativas",
+    "url": "/guias.html",
+    "section": "otros",
+    "tags": ["guías", "procedimientos-rápidos", "checklist", "anti-estafa", "operaciones"],
+    "updated": "2026-02-05",
+    "version": "1.0",
+    "area": "Ventas, Administración, Bodega",
+    "summary": "Guías rápidas para ejecución de procesos clave: verificación de clientes, NV, logística, registro fotográfico y más.",
+    "critical": false
+  },
+  {
+    "title": "Preguntas Frecuentes (FAQ)",
+    "url": "/faq.html",
+    "section": "otros",
+    "tags": ["FAQ", "preguntas", "dudas", "consultas", "aclaraciones"],
+    "updated": "2026-02-05",
+    "version": "1.0",
+    "area": "Todo el personal",
+    "summary": "Respuestas a dudas operativas comunes sobre protocolos, ventas, administración, logística, horarios y seguridad.",
+    "critical": false
+  },
+  {
+    "title": "Glosario de Términos",
+    "url": "/glosario.html",
+    "section": "otros",
+    "tags": ["glosario", "términos", "definiciones", "vocabulario", "referencias"],
+    "updated": "2026-02-05",
+    "version": "1.0",
+    "area": "Todo el personal",
+    "summary": "Definiciones de términos técnicos y operativos para interpretación uniforme de la documentación corporativa.",
+    "critical": false
+  },
+  {
+    "title": "Historial de Cambios",
+    "url": "/historial.html",
+    "section": "otros",
+    "tags": ["historial", "versiones", "cambios", "actualizaciones", "control"],
+    "updated": "2026-02-05",
+    "version": "1.0",
+    "area": "Todo el personal",
+    "summary": "Control de versiones y actualizaciones de todos los documentos del sistema de gestión documental.",
+    "critical": false
+  }
+]

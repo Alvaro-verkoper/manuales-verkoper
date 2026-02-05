@@ -1,0 +1,139 @@
+========================================
+VERKOPER SPA - PORTAL DE GESTIÓN DOCUMENTAL
+INSTRUCCIONES DE INSTALACIÓN Y USO
+========================================
+
+CONTENIDO ENTREGADO:
+-------------------
+✓ index.html - Página principal
+✓ guias.html - Guías operativas
+✓ faq.html - Preguntas frecuentes
+✓ glosario.html - Glosario de términos
+✓ historial.html - Control de versiones
+✓ README.md - Documentación completa
+✓ assets/css/styles.css - Estilos completos
+✓ assets/js/app.js - JavaScript funcional
+✓ data/docs.json - Base de datos documentos
+✓ data/resources.json - Base de datos recursos
+
+DOCUMENTOS CREADOS:
+------------------
+✓ matrices/estafas.html - Matriz de Seguridad (COMPLETO)
+✓ protocolos/horarios.html - Protocolo Horarios (COMPLETO)
+✓ procedimientos/venta.html - Procedimiento Venta (COMPLETO)
+✓ recursos/index.html - Página de recursos (COMPLETO)
+
+DOCUMENTOS PENDIENTES:
+---------------------
+Los siguientes documentos deben crearse siguiendo la misma estructura
+de los ya creados (copiar estructura de estafas.html o horarios.html):
+
+□ protocolos/administrativo.html
+□ protocolos/ventas.html  
+□ protocolos/bodega.html
+□ protocolos/conducta.html
+□ protocolos/jefe-sucursal.html
+□ procedimientos/logistica.html
+□ matrices/cumplimiento-rol.html
+□ matrices/sanciones.html
+
+INSTRUCCIONES DE INSTALACIÓN:
+-----------------------------
+
+1. CREAR REPOSITORIO EN GITHUB:
+   - Ve a github.com y crea un nuevo repositorio
+   - Nombre sugerido: verkoper-portal-documentos
+   - Tipo: Public (para GitHub Pages gratis)
+
+2. SUBIR ARCHIVOS:
+   git init
+   git add .
+   git commit -m "Initial commit - Portal gestión documental"
+   git branch -M main
+   git remote add origin https://github.com/TU_USUARIO/verkoper-portal-documentos.git
+   git push -u origin main
+
+3. ACTIVAR GITHUB PAGES:
+   - Ve a Settings → Pages
+   - Source: Deploy from a branch
+   - Branch: main
+   - Folder: / (root)
+   - Save
+
+4. ESPERAR DESPLIEGUE:
+   - GitHub tomará 2-5 minutos para desplegar
+   - El sitio estará en: https://TU_USUARIO.github.io/verkoper-portal-documentos/
+
+COMPLETAR DOCUMENTOS FALTANTES:
+-------------------------------
+
+Para cada documento pendiente:
+
+1. Copiar estructura de un documento existente (ej: matrices/estafas.html)
+2. Cambiar título, versión, vigencia, aplica a
+3. Pegar el contenido oficial en la sección doc-content
+4. Actualizar el índice (TOC) con las secciones del documento
+5. Agregar/actualizar documentos relacionados
+
+EJEMPLO:
+
+```html
+<div class="doc-content">
+    <h2 id="section1">1. Título de Sección</h2>
+    <p>Contenido de la sección...</p>
+    
+    <h2 id="section2">2. Siguiente Sección</h2>
+    <p>Más contenido...</p>
+</div>
+```
+
+AGREGAR NUEVOS DOCUMENTOS AL JSON:
+----------------------------------
+
+Editar data/docs.json y agregar:
+
+```json
+{
+  "title": "Nombre del Documento",
+  "url": "/ruta/documento.html",
+  "section": "protocolos|procedimientos|matrices|otros",
+  "tags": ["tag1", "tag2"],
+  "updated": "2026-02-05",
+  "version": "1.0",
+  "area": "Área aplicable",
+  "summary": "Resumen breve",
+  "critical": true
+}
+```
+
+PERSONALIZACIÓN:
+---------------
+
+COLORES:
+Editar assets/css/styles.css líneas 12-22
+
+LOGO:
+Cambiar "VERKOPER" en el <div class="logo"> de cada HTML
+
+CONTENIDO:
+Todos los textos están directamente en los HTML, fácil de editar
+
+SOPORTE:
+--------
+- Ver README.md para documentación completa
+- Todos los archivos son HTML/CSS/JS estándar
+- Sin dependencias externas
+- Compatible con cualquier servidor web estático
+
+IMPORTANTE:
+----------
+- NO usar frameworks adicionales
+- NO agregar CDNs
+- Mantener estructura de carpetas
+- Actualizar docs.json al agregar documentos
+- Los recursos se agregan subiendo archivos al repo, no desde la web
+
+========================================
+VERKOPER SPA © 2026
+Portal listo para producción
+========================================

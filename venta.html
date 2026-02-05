@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedimiento de Venta - VERKOPER SPA</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">VERKOPER</div>
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">Inicio</a>
+                <a href="../index.html#protocolos" class="nav-link">Protocolos</a>
+                <a href="../index.html#procedimientos" class="nav-link active">Procedimientos</a>
+                <a href="../index.html#matrices" class="nav-link">Matrices</a>
+                <a href="../guias.html" class="nav-link">Guías</a>
+                <a href="../faq.html" class="nav-link">FAQ</a>
+                <a href="../glosario.html" class="nav-link">Glosario</a>
+                <a href="../historial.html" class="nav-link">Historial</a>
+                <a href="../recursos/index.html" class="nav-link">Recursos</a>
+            </nav>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <div class="breadcrumbs"><a href="../index.html">Inicio</a> / <a href="../index.html#procedimientos">Procedimientos</a> / Procedimiento de Venta</div>
+            <div class="doc-header">
+                <h1 class="doc-title">Procedimiento de Venta: De Cotización a Facturación</h1>
+                <div class="doc-info">
+                    <div class="info-item"><div class="info-label">Versión</div><div class="info-value">1.0</div></div>
+                    <div class="info-item"><div class="info-label">Vigencia</div><div class="info-value">2026</div></div>
+                    <div class="info-item"><div class="info-label">Aplica a</div><div class="info-value">Área de Ventas, Área Administrativa</div></div>
+                    <div class="info-item"><div class="info-label">Carácter</div><div class="info-value">Cumplimiento obligatorio</div></div>
+                </div>
+                <div class="doc-actions"><button class="btn btn-primary" onclick="printDocument()">Imprimir</button></div>
+            </div>
+            <div class="toc-section">
+                <h2>Índice de Contenidos</h2>
+                <ul class="toc-list">
+                    <li><a href="#section1">1. Objetivo</a></li>
+                    <li><a href="#section2">2. Alcance</a></li>
+                    <li><a href="#section3">3. Roles</a></li>
+                    <li><a href="#section4">4. Contacto y Verificación del Cliente</a></li>
+                    <li><a href="#section5">5. Generación de Cotización</a></li>
+                    <li><a href="#section6">6. Aceptación de Cotización</a></li>
+                    <li><a href="#section7">7. Generación de Nota de Venta (NV)</a></li>
+                    <li><a href="#section8">8. Registro y Seguimiento</a></li>
+                    <li><a href="#section9">9. Validación Administrativa</a></li>
+                    <li><a href="#section10">10. Flujo Documental Obligatorio (MAXXA)</a></li>
+                    <li><a href="#section11">11. Facturación</a></li>
+                    <li><a href="#section12">12. Incumplimientos</a></li>
+                    <li><a href="#section13">13. Vigencia</a></li>
+                </ul>
+            </div>
+            <div class="doc-content">
+                <h2 id="section1">1. Objetivo</h2>
+                <p>Paso a paso del proceso de venta para asegurar veracidad, prevención de estafas, coordinación, trazabilidad y cumplimiento del flujo documental.</p>
+                <h2 id="section2">2. Alcance</h2>
+                <p>Aplica a cotizaciones, NV, coordinación admin/logística, documentos tributarios y registro MAXXA.</p>
+                <h2 id="section3">3. Roles</h2>
+                <h3>3.1 Ventas</h3>
+                <p>Gestionar clientes, verificar identidad/datos, cotizar completo, generar NV, trazabilidad.</p>
+                <h3>3.2 Admin</h3>
+                <p>Validar info, procesar docs, coordinar adquisición/logística, emitir docs.</p>
+                <h2 id="section4">4. Contacto y Verificación del Cliente</h2>
+                <p><strong>Obligatorio antes de cotizar:</strong></p>
+                <ul>
+                    <li>Verificar identidad por llamada</li>
+                    <li>Confirmar dominio correo y coherencia datos</li>
+                </ul>
+                <p><strong>Prohibido</strong> cotizar sin verificación telefónica.</p>
+                <h2 id="section5">5. Generación de Cotización</h2>
+                <p>Debe incluir:</p>
+                <ul>
+                    <li>Descripción completa de productos</li>
+                    <li>Precio vigente con margen</li>
+                    <li>Costos despacho/retiro/sobrecargos</li>
+                    <li>Plazos realistas</li>
+                    <li>Indicación de stock o adquisición</li>
+                    <li>Datos del vendedor</li>
+                    <li>Vigencia de la cotización</li>
+                </ul>
+                <p>Priorizar proveedores cercanos, confiables y eficientes.</p>
+                <h2 id="section6">6. Aceptación de Cotización</h2>
+                <p>Respaldar aceptación (correo/OC/mensaje formal). Sin respaldo no se considera cerrada.</p>
+                <h2 id="section7">7. Generación de Nota de Venta (NV)</h2>
+                <p><strong>Obligatoria.</strong> Debe incluir mínimo:</p>
+                <ul>
+                    <li>Empresa cliente, contacto, RUT</li>
+                    <li>Teléfonos empresa/contacto</li>
+                    <li>Correos empresa/contacto (dominio coherente)</li>
+                    <li>Forma de envío (cliente final / transporte / retiro)</li>
+                    <li>Proveedor por ítem (nombre, código, cantidad, precio)</li>
+                    <li>Dirección real completa</li>
+                    <li>Forma de pago</li>
+                </ul>
+                <p><strong>No avanzar sin NV completa.</strong></p>
+                <h2 id="section8">8. Registro y Seguimiento</h2>
+                <p>Registrar NV en documento Drive de seguimiento. Mantener actualizado y coordinar con administración.</p>
+                <h2 id="section9">9. Validación Administrativa</h2>
+                <p>Admin valida coherencia y montos; procesa adquisición y logística. Si hay errores, devuelve.</p>
+                <h2 id="section10">10. Flujo Documental Obligatorio (MAXXA)</h2>
+                <p><strong>COTIZACIÓN → NOTA DE VENTA → GUÍA DE DESPACHO → FACTURACIÓN → DESCUENTO DE STOCK</strong></p>
+                <p><strong>Prohibido:</strong> facturar sin GD, GD sin NV, alterar orden.</p>
+                <h2 id="section11">11. Facturación</h2>
+                <p>Admin factura en MAXXA; factura debe reflejar lo despachado/entregado. Diferencias se corrigen antes de cerrar.</p>
+                <h2 id="section12">12. Incumplimientos</h2>
+                <p>Conforme protocolos, matriz estafas, matriz sanciones y RIOHS.</p>
+                <h2 id="section13">13. Vigencia</h2>
+                <p>Cumplimiento obligatorio desde publicación.</p>
+            </div>
+            <div class="related-docs">
+                <h2>Documentos Relacionados</h2>
+                <ul class="related-list">
+                    <li><a href="../protocolos/ventas.html">Protocolo de Trabajo Área de Ventas</a></li>
+                    <li><a href="../protocolos/administrativo.html">Protocolo Área Administrativa</a></li>
+                    <li><a href="../matrices/estafas.html">Matriz de Seguridad y Prevención de Estafas</a></li>
+                    <li><a href="../guias.html">Guías Operativas</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container"><p>&copy; 2026 VERKOPER SPA - Ferretería Técnica Especializada</p></div>
+    </footer>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERKOPER SPA - Portal de Manuales y Protocolos</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">VERKOPER</div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link active">Inicio</a>
+                <a href="#protocolos" class="nav-link" onclick="showSection(event, 'protocolos')">Protocolos</a>
+                <a href="#procedimientos" class="nav-link" onclick="showSection(event, 'procedimientos')">Procedimientos</a>
+                <a href="#matrices" class="nav-link" onclick="showSection(event, 'matrices')">Matrices</a>
+                <a href="guias.html" class="nav-link">Guías</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="glosario.html" class="nav-link">Glosario</a>
+                <a href="historial.html" class="nav-link">Historial</a>
+                <a href="recursos/index.html" class="nav-link">Recursos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h1>VERKOPER</h1>
+                <p class="subtitle">Ferretería Técnica Especializada</p>
+                <p class="hero-description">Portal de Manuales y Protocolos</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="search-section">
+                <h2>Buscar Documentos</h2>
+                <div class="search-box">
+                    <input type="text" id="globalSearch" placeholder="Buscar por título, tags o resumen...">
+                    <button onclick="performSearch()">Buscar</button>
+                </div>
+                <div id="searchResults"></div>
+            </section>
+
+            <section class="stats-section">
+                <h2>Documentación Disponible</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-protocolos">0</div>
+                        <div class="stat-label">Protocolos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-procedimientos">0</div>
+                        <div class="stat-label">Procedimientos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-matrices">0</div>
+                        <div class="stat-label">Matrices</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-otros">0</div>
+                        <div class="stat-label">Otros Documentos</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="quick-access">
+                <h2>Documentos Críticos - Acceso Rápido</h2>
+                <div class="cards-grid" id="quickAccessCards"></div>
+            </section>
+
+            <section id="protocolos" class="doc-section" style="display:none;">
+                <h2>Protocolos</h2>
+                <div class="cards-grid" id="protocolosList"></div>
+            </section>
+
+            <section id="procedimientos" class="doc-section" style="display:none;">
+                <h2>Procedimientos</h2>
+                <div class="cards-grid" id="procedimientosList"></div>
+            </section>
+
+            <section id="matrices" class="doc-section" style="display:none;">
+                <h2>Matrices</h2>
+                <div class="cards-grid" id="matricesList"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 VERKOPER SPA - Ferretería Técnica Especializada</p>
+            <p>Portal Interno de Gestión Documental</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

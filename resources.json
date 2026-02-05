@@ -1,0 +1,117 @@
+[
+  {
+    "title": "Tutorial: Cómo Verificar Cliente Antes de Cotizar",
+    "type": "tutorial",
+    "area": "ventas",
+    "tags": ["verificación", "anti-estafa", "llamadas", "cotización"],
+    "date": "2026-02-05",
+    "file_path": "/uploads/tutoriales/verificacion-cliente-tutorial.pdf",
+    "related_docs": [
+      {"title": "Matriz de Seguridad y Prevención de Estafas", "url": "/matrices/estafas.html"},
+      {"title": "Procedimiento de Venta", "url": "/procedimientos/venta.html"}
+    ]
+  },
+  {
+    "title": "Plantilla de Nota de Venta Completa",
+    "type": "plantilla",
+    "area": "ventas",
+    "tags": ["NV", "plantilla", "formulario", "ventas"],
+    "date": "2026-02-05",
+    "file_path": "/uploads/plantillas/plantilla-nota-venta.xlsx",
+    "related_docs": [
+      {"title": "Procedimiento de Venta", "url": "/procedimientos/venta.html"},
+      {"title": "Protocolo de Trabajo Área de Ventas", "url": "/protocolos/ventas.html"}
+    ]
+  },
+  {
+    "title": "Documentación: Uso del ERP MAXXA para Ventas",
+    "type": "documentacion",
+    "area": "ventas",
+    "tags": ["MAXXA", "ERP", "sistema", "capacitación"],
+    "date": "2026-02-01",
+    "file_path": "/uploads/documentacion/guia-maxxa-ventas.pdf",
+    "related_docs": [
+      {"title": "Protocolo de Trabajo Área de Ventas", "url": "/protocolos/ventas.html"},
+      {"title": "Procedimiento de Venta", "url": "/procedimientos/venta.html"}
+    ]
+  },
+  {
+    "title": "Tutorial: Planificación de Rutas con Google Maps",
+    "type": "tutorial",
+    "area": "administracion",
+    "tags": ["logística", "rutas", "google-maps", "despachos"],
+    "date": "2026-02-05",
+    "file_path": "/uploads/tutoriales/planificacion-rutas-tutorial.pdf",
+    "related_docs": [
+      {"title": "Procedimiento de Logística", "url": "/procedimientos/logistica.html"}
+    ]
+  },
+  {
+    "title": "Plantilla de Carátula para Envíos",
+    "type": "plantilla",
+    "area": "administracion",
+    "tags": ["carátula", "envíos", "transporte", "logística"],
+    "date": "2026-02-05",
+    "file_path": "/uploads/plantillas/caratula-envios.docx",
+    "related_docs": [
+      {"title": "Procedimiento de Logística", "url": "/procedimientos/logistica.html"}
+    ]
+  },
+  {
+    "title": "Tutorial: Registro Fotográfico en Bodega",
+    "type": "tutorial",
+    "area": "bodega",
+    "tags": ["fotografía", "registro", "evidencia", "bodega"],
+    "date": "2026-02-05",
+    "file_path": "/uploads/tutoriales/registro-fotografico-tutorial.pdf",
+    "related_docs": [
+      {"title": "Procedimiento de Logística", "url": "/procedimientos/logistica.html"},
+      {"title": "Protocolo de Trabajo Área de Bodega", "url": "/protocolos/bodega.html"}
+    ]
+  },
+  {
+    "title": "Plantilla de Control de Stock Diario",
+    "type": "plantilla",
+    "area": "bodega",
+    "tags": ["stock", "inventario", "control", "seguimiento"],
+    "date": "2026-02-03",
+    "file_path": "/uploads/plantillas/control-stock-diario.xlsx",
+    "related_docs": [
+      {"title": "Protocolo de Trabajo Área de Bodega", "url": "/protocolos/bodega.html"}
+    ]
+  },
+  {
+    "title": "Evidencia: Caso de Estudio - Intento de Estafa Detectado",
+    "type": "evidencia",
+    "area": "general",
+    "tags": ["caso-real", "estafa", "prevención", "alerta"],
+    "date": "2026-01-28",
+    "file_path": "/uploads/evidencias/caso-estudio-estafa-enero2026.pdf",
+    "related_docs": [
+      {"title": "Matriz de Seguridad y Prevención de Estafas", "url": "/matrices/estafas.html"}
+    ]
+  },
+  {
+    "title": "Documentación: Guía de Uso del Sistema Biométrico",
+    "type": "documentacion",
+    "area": "general",
+    "tags": ["biométrico", "asistencia", "marcaje", "horarios"],
+    "date": "2026-01-20",
+    "file_path": "/uploads/documentacion/guia-sistema-biometrico.pdf",
+    "related_docs": [
+      {"title": "Protocolo de Horarios y Asistencia", "url": "/protocolos/horarios.html"}
+    ]
+  },
+  {
+    "title": "Tutorial: Coordinación Efectiva Entre Áreas",
+    "type": "tutorial",
+    "area": "jefatura",
+    "tags": ["coordinación", "comunicación", "liderazgo", "trabajo-equipo"],
+    "date": "2026-02-02",
+    "file_path": "/uploads/tutoriales/coordinacion-areas-tutorial.pdf",
+    "related_docs": [
+      {"title": "Protocolo de Funciones Jefe de Sucursal", "url": "/protocolos/jefe-sucursal.html"},
+      {"title": "Matriz de Cumplimiento por Rol", "url": "/matrices/cumplimiento-rol.html"}
+    ]
+  }
+]
